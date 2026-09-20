@@ -14,7 +14,12 @@ const (
 	Blue
 )
 
+var (
+	EnableColor bool = false
+)
+
 func wrapColor(color int, value ...any) string {
+	if !EnableColor { return fmt.Sprint(value...) }
 	return fmt.Sprintf("\033[1;%vm", color) + fmt.Sprint(value...) + "\033[1;0m"
 }
 
@@ -33,7 +38,6 @@ func Warn(value ...any) {
 	fmt.Fprint(os.Stdout, wrapPrefix(strings.Join(prefix, " ")))
 	fmt.Println(value...)
 }
-
 
 func Error(value ...any) {
 	prefix := []string{wrapColor(Blue, time.Now().Format(time.DateTime)), wrapColor(Red, "ERROR")}
