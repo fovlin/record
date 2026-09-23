@@ -19,8 +19,8 @@ var (
 	EnableColor bool = false
 )
 
-func InitColorFlag() {
-	flag.BoolVar(&EnableColor, "color", true, "enable color output, default is true")
+func InitColorFlag(defaultVar bool) {
+	flag.BoolVar(&EnableColor, "color", defaultVar, "enable color output, default is true")
 	flag.Parse()
 	if EnableColor {
 		record.EnableColor = true
