@@ -19,8 +19,9 @@ var (
 	EnableColor bool = false
 )
 
+// Function will use flag.Parse Function, you should use it in end of parse flag.
 func InitColorFlag(defaultVar bool) {
-	flag.BoolVar(&EnableColor, "color", defaultVar, "enable color output, default is true")
+	flag.BoolVar(&EnableColor, "color", defaultVar, "enable color output, default is "+ string(defaultVar))
 	flag.Parse()
 	if EnableColor {
 		EnableColor = true
