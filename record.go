@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 	"time"
+	"flag"
 )
 
 const (
@@ -17,6 +18,14 @@ const (
 var (
 	EnableColor bool = false
 )
+
+func InitColorFlag() {
+	flag.BoolVar(&EnableColor, "color", true, "enable color output, default is true")
+	flag.Parse()
+	if enableColor {
+		record.EnableColor = true
+	}
+}
 
 func wrapColor(color int, value ...any) string {
 	if !EnableColor { return fmt.Sprint(value...) }
