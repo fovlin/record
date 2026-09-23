@@ -22,7 +22,7 @@ var (
 func InitColorFlag() {
 	flag.BoolVar(&EnableColor, "color", true, "enable color output, default is true")
 	flag.Parse()
-	if enableColor {
+	if EnableColor {
 		record.EnableColor = true
 	}
 }
