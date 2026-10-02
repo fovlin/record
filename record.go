@@ -5,7 +5,6 @@ import (
 	"os"
 	"strings"
 	"time"
-	"flag"
 )
 
 const (
@@ -18,15 +17,6 @@ const (
 var (
 	EnableColor bool = false
 )
-
-// Function will use flag.Parse Function, you should use it in end of parse flag.
-func InitColorFlag(defaultVar bool) {
-	flag.BoolVar(&EnableColor, "color", defaultVar, "color output flag")
-	flag.Parse()
-	if EnableColor {
-		EnableColor = true
-	}
-}
 
 func wrapColor(color int, value ...any) string {
 	if !EnableColor { return fmt.Sprint(value...) }
